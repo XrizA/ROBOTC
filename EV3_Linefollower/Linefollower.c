@@ -1,5 +1,5 @@
-#pragma config(Motor,  motorB,          leftWheel,     tmotorEV3_Large, PIDControl, driveLeft, encoder)
-#pragma config(Motor,  motorC,          rightWheel,    tmotorEV3_Large, PIDControl, driveRight, encoder)
+#pragma config(Motor, motorB, leftWheel, tmotorEV3_Large, PIDControl, driveLeft, encoder)
+#pragma config(Motor, motorC, rightWheel, tmotorEV3_Large, PIDControl, driveRight, encoder)
 
 #define PWR 55
 #define NPWR -65
