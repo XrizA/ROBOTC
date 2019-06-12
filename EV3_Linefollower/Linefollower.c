@@ -16,13 +16,13 @@ task main()
 			motor[leftWheel] = NPWR;
 			motor[rightWheel] = PWR;
 		}
-                // 2 black, 3 white -> right
+    // 2 black, 3 white -> right
 		else if (getColorReflected(S2) < THRESHOLD && getColorReflected(S3) > THRESHOLD)
 		{
 			motor[leftWheel] = PWR;
 			motor[rightWheel] = NPWR;
 		}
-                // 2 white black, 3 white black -> Go straight
+    // 2 white black, 3 white black -> Go straight
 		else
 		{
 			motor[leftWheel] = GOSTRAIGHT;
