@@ -1,28 +1,29 @@
-#pragma config(Motor, motorB, leftWheel, tmotorEV3_Large, PIDControl, driveLeft, encoder)
-#pragma config(Motor, motorC, rightWheel, tmotorEV3_Large, PIDControl, driveRight, encoder)
+#pragma config(Motor,  motorB,          leftWheel,     tmotorEV3_Large, PIDControl, driveLeft, encoder)
+#pragma config(Motor,  motorC,          rightWheel,    tmotorEV3_Large, PIDControl, driveRight, encoder)
 
-#define PWR 55
-#define NPWR -65
+#define PWR 30
+#define NPWR -27
 #define THRESHOLD 35
-#define GOSTRAIGHT 50
+#define GOSTRAIGHT 35
 
 task main()
 {
+	int leftLight = 0;
+	int rightLight = 0;
 	while (true)
 	{
-		// 2 white, 3 black -> left
-		if (getColorReflected(S2) > THRESHOLD && getColorReflected(S3) < THRESHOLD)
+		leftLight = getColorReflected(S2);
+		rightLight = getColorReflected(S3);
+		if (leftLight > THRESHOLD && rightLight < THRESHOLD)
 		{
-			motor[leftWheel] = NPWR;
 			motor[rightWheel] = PWR;
+			motor[leftWheel] = NPWR;
 		}
-    // 2 black, 3 white -> right
-		else if (getColorReflected(S2) < THRESHOLD && getColorReflected(S3) > THRESHOLD)
+		else if (leftLight < THRESHOLD && rightLight > THRESHOLD)
 		{
 			motor[leftWheel] = PWR;
 			motor[rightWheel] = NPWR;
 		}
-    // 2 white black, 3 white black -> Go straight
 		else
 		{
 			motor[leftWheel] = GOSTRAIGHT;
